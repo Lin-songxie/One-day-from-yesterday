@@ -219,26 +219,35 @@
          * COLUMN 3: THE INDEX 
          */
         .col-index {
-            padding-top: 100px; /* Negative space at top */
+            padding-top: 0;  
+            margin-top: 0;    
+            display: flex;
+            flex-direction: column;
         }
 
+        .index-list {
+            margin-top: 0;
+        }
+        
         .index-list li {
             margin-bottom: 15px;
-            border-bottom: 1px solid #eee; /* Very subtle separation */
+            border-bottom: 1px solid #eee;
         }
 
         .index-list a {
             display: block;
             font-family: var(--font-serif);
-            font-size: 1.2rem;
+            font-size: 1rem;
             padding-bottom: 5px;
+            color: #333;
+            transition: padding 0.3s ease, color 0.3s ease;
         }
 
         .index-list a:hover {
             font-style: italic;
             text-decoration: none;
-            padding-left: 10px; /* Slight movement on hover */
-            transition: padding 0.3s ease;
+            padding-left: 10px;
+            color: #000;
         }
 
         /* 
