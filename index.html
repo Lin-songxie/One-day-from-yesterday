@@ -61,9 +61,9 @@
         h1 {
             font-size: 2.2rem;
             font-weight: 700;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .meta-header {
@@ -73,7 +73,7 @@
             font-style: italic;     
             font-size: 0.95rem;
             color: #666;            
-            line-height: 1.2;
+            line-height: 1.8;
         }
 
         /* 
@@ -94,12 +94,13 @@
         .col-identity {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
+            align-items: flex-start;
         }
 
         .portrait-frame {
-            width: 60%;
-            margin-bottom: 20px;
+            width: 100px; 
+            margin-bottom: 5px;
         }
 
         .portrait-frame img {
@@ -108,40 +109,44 @@
             display: block;
         }
 
-        .bio-text {
-            font-size: 1rem;
+        
+        .bio-text, .references {
+            width: 100px; /* 宽度与照片保持一致，确保文字在边缘处自动控制 */
+            white-space: nowrap; /* 强制不换行 */
+            font-size: 0.85rem; /* 稍微缩小字号以适应宽度 */
+            font-family: var(--font-serif); /* 统一使用衬线体 */
         }
 
         .bio-name {
-            font-weight: bold;
+            font-weight: normal; /* 取消粗体，保持档案式的平整感 */
             display: block;
-            font-size: 1.2rem;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
-        .bio-title {
-            font-style: italic;
+        .bio-title, .bio-email {
             display: block;
-            margin-bottom: 8px;
+            font-size: 0.75rem;
+            margin-bottom: 2px;
+        }
+        
+       .references {
+           margin-top: 10px;
         }
 
-        .bio-email {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
+       .ref-label {
+           display: block;
+           font-style: italic; /* 阅读推荐标签使用斜体 */
+           text-decoration: none; /* 取消下划线 */
+           margin-bottom: 5px;
+           font-size: 0.8rem;
         }
 
-        .references {
-            margin-top: 40px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-        }
-
-        .ref-label {
-            display: block;
-            margin-bottom: 10px;
-            text-decoration: underline;
-        }
-
+       .references ul li {
+           font-style: italic; /* 推荐书目使用斜体 */
+           font-size: 0.75rem;
+           line-height: 1.6;
+       }
+    
         /* 
          * COLUMN 2: SPECIMEN & MANIFESTO 
          */
@@ -274,16 +279,19 @@
             <div class="bio-text">
                 <span class="bio-name">林松薤</span>
                 <span class="bio-title">中国-天津</span>
-                <a href="2991883449@qq.com" class="bio-email">2991883449@qq.com</a>
+                <span class="2991883449@qq.com"></span>
             </div>
 
             <div class="references">
-                <span class="ref-label">REFERENCES</span>
-                <ul>
-                    <li>[1] 大卫·赫恩谈艺录</li>
-                    <li>[2] 东方游记</li>
-                    <li>[3] 不寻常的地方</li>
-                </ul>
+               <span class="ref-label">阅读推荐</span>
+               <ul>
+                  <li>大卫·赫恩</li>
+                  <li>《摄影师手册》</li>
+                  <li>史蒂芬·肖尔</li>
+                  <li>《不寻常的地方》</li>
+                  <li>马克·吕布</li>
+                  <li>《东方游记》</li>
+               </ul>
             </div>
         </aside>
 
