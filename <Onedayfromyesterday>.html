@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>昨日世界的一天-One Day From Yesterday | Lin Songxie</title>
+    <style>
+        /* 
+         * DESIGN SYSTEM & RESET 
+         * Swiss Style / Archival Brutalism
+         */
+        :root {
+            --color-bg: #FFFFFF;
+            --color-text: #000000;
+            --font-serif: "Times New Roman", Times, "SimSun", "Songti SC", serif;
+            --font-mono: "Courier New", Courier, monospace;
+            --spacing-unit: 20px;
+            --border-style: 1px solid var(--color-text);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-serif);
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+            padding: var(--spacing-unit);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 
+         * HEADER 
+         */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: var(--border-style);
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .meta-header {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        /* 
+         * MAIN GRID LAYOUT 
+         * Desktop: 20% - 55% - 25%
+         */
+        main {
+            display: grid;
+            grid-template-columns: 20% 55% 25%;
+            gap: 40px; /* Negative space */
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* 
+         * COLUMN 1: THE IDENTITY 
+         */
+        .col-identity {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .portrait-frame {
+            width: 100%;
+            border: var(--border-style);
+            /* Aspect ratio placeholder helper */
+            background: #f0f0f0; 
+        }
+
+        .portrait-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%); /* Force B&W for archival look */
+        }
+
+        .bio-text {
+            font-size: 1rem;
+        }
+
+        .bio-name {
+            font-weight: bold;
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .bio-title {
+            font-style: italic;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .bio-email {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .references {
+            margin-top: 40px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .ref-label {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+
+        /* 
+         * COLUMN 2: SPECIMEN & MANIFESTO 
+         */
+        .slide-viewer {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background-color: #000; /* Darkroom feel inside viewer */
+            position: relative;
+            overflow: hidden;
+            border: var(--border-style);
+            margin-bottom: 10px;
+        }
+
+        .slide-viewer img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: crossfade 12s infinite;
+        }
+
+        /* Simple CSS Crossfade Logic */
+        .slide-viewer img:nth-child(1) { animation-delay: 0s; opacity: 1; }
+        .slide-viewer img:nth-child(2) { animation-delay: 4s; }
+        .slide-viewer img:nth-child(3) { animation-delay: 8s; }
+
+        @keyframes crossfade {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            33% { opacity: 1; }
+            43% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .caption {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .manifesto {
+            text-align: justify;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* 
+         * COLUMN 3: THE INDEX 
+         */
+        .col-index {
+            padding-top: 100px; /* Negative space at top */
+        }
+
+        .index-list li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee; /* Very subtle separation */
+        }
+
+        .index-list a {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            padding-bottom: 5px;
+        }
+
+        .index-list a:hover {
+            font-style: italic;
+            text-decoration: none;
+            padding-left: 10px; /* Slight movement on hover */
+            transition: padding 0.3s ease;
+        }
+
+        /* 
+         * FOOTER 
+         */
+        footer {
+            margin-top: 80px;
+            padding-top: 20px;
+            border-top: var(--border-style);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-align: center;
+        }
+
+        /* 
+         * RESPONSIVE (MOBILE) 
+         */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            h1 { font-size: 2rem; }
+
+            main {
+                grid-template-columns: 1fr; /* Stack vertically */
+                gap: 60px;
+            }
+
+            .col-index {
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>One Day From Yesterday</h1>
+        <span class="meta-header">Vol. 2020-2026 / Archival</span>
+    </header>
+
+    <!-- Main Grid Content -->
+    <main>
+        
+        <!-- COLUMN 1: The Identity -->
+        <aside class="col-identity">
+            <figure class="portrait-frame">
+                <!-- PHOTO: USER PORTRAIT -->
+                <img src="photo_self.jpg" alt="Photo_self"> <!-- 请替换为你的肖像图片文件名: photo_self.jpg -->
+            </figure>
+            
+            <div class="bio-text">
+                <span class="bio-name">林松薤</span>
+                <span class="bio-title">中国-天津</span>
+                <a href="mailto:your-email@example.com" class="bio-email">2991883449@qq.com</a>
+            </div>
+
+            <div class="references">
+                <span class="ref-label">REFERENCES</span>
+                <ul>
+                    <li>[1] S. Shore: Uncommon Places</li>
+                    <li>[2] M. Riboud: The Three Banners</li>
+                    <li>[3] G.W.F. Hegel: Aesthetics</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- COLUMN 2: The Specimen & Manifesto -->
+        <section class="col-specimen">
+            <!-- SLIDE VIEWER AUTOMATON -->
+            <div class="slide-viewer">
+                <!-- PHOTO: SLIDESHOW IMAGES -->
+                <!-- Note: The CSS is set up to crossfade 3 images. Add more <img> tags if needed. -->
+                <img src="photo_1.jpg" alt="Landscape Specimen 1"> <!-- 请替换为幻灯片图片1: photo_1.jpg -->
+                <img src="photo_2.jpg" alt="Landscape Specimen 2"> <!-- 请替换为幻灯片图片2: photo_2.jpg -->
+                <img src="photo_3.jpg" alt="Landscape Specimen 3"> <!-- 请替换为幻灯片图片3: photo_3.jpg -->
+            </div>
+            
+            <span class="caption">Fig. 1: Automated Loop / Sequence I-VII</span>
+
+            <article class="manifesto">
+                <p>
+                    我的摄影主题涉及两个主要的部分——旅行和事件，但我所拍的照片既不是游记、也不是纪实，它们共同构成一种我想要传达的风景。我的一切作品都是基于某种幻想的，我在这种幻想下重构由真实的瞬间组成的世界。博物学家，这是一个我能想到的、在历史上最与此相近的一类人，旅行或者分享其他人的旅途、想象、挑选，最后用文字和绘图制作档案，丰富人们看得见的以及看不见的世界。我使用平常但具有启示性的图像完成这些工作，旨在说明，一切相似的、不相似的生活都在经历一场旷日持久的冒险，并在最终指向同一种安宁。
+                </p>
+            </article>
+        </section>
+
+        <!-- COLUMN 3: The Index -->
+        <nav class="col-index">
+            <ul class="index-list">
+                <!-- LINKS: NAVIGATION -->
+                <li><a href="#">I. The Arrival</a> <!-- 请填写实际跳转链接 --></li>
+                <li><a href="#">II. Static Events</a> <!-- 请填写实际跳转链接 --></li>
+                <li><a href="#">III. Flora & Concrete</a> <!-- 请填写实际跳转链接 --></li>
+                <li><a href="#">IV. Absent Friends</a> <!-- 请填写实际跳转链接 --></li>
+                <li><a href="#">V. The Horizon</a> <!-- 请填写实际跳转链接 --></li>
+                <li><a href="#">VI. Archive 2024</a> <!-- 请填写实际跳转链接 --></li>
+                <li><a href="#">VII. Correspondence</a> <!-- 请填写实际跳转链接 --></li>
+            </ul>
+        </nav>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Lin Songxie. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
