@@ -51,8 +51,9 @@
          */
         header {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             border-bottom: var(--border-style);
             padding-bottom: 10px;
             margin-bottom: 40px;
@@ -92,17 +93,14 @@
         }
 
         .portrait-frame {
-            width: 100%;
-            border: var(--border-style);
-            /* Aspect ratio placeholder helper */
-            background: #f0f0f0; 
+            width: 70%;
+            margin-bottom: 20px;
         }
 
         .portrait-frame img {
             width: 100%;
             height: auto;
             display: block;
-            filter: grayscale(100%); /* Force B&W for archival look */
         }
 
         .bio-text {
@@ -143,37 +141,38 @@
          * COLUMN 2: SPECIMEN & MANIFESTO 
          */
         .slide-viewer {
-            width: 100%;
-            aspect-ratio: 4/3;
-            background-color: #000; /* Darkroom feel inside viewer */
-            position: relative;
+            width: 80%;                 
+            aspect-ratio: 4/3;         
+            position: relative;        
+            margin: 0 auto 10px auto;  
             overflow: hidden;
-            border: var(--border-style);
-            margin-bottom: 10px;
         }
 
         .slide-viewer img {
-            position: absolute;
+            position: absolute;        
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0;
-            animation: crossfade 12s infinite;
+            opacity: 0;                 
+            animation: hardSwitch 35s infinite; 
         }
 
         /* Simple CSS Crossfade Logic */
-        .slide-viewer img:nth-child(1) { animation-delay: 0s; opacity: 1; }
-        .slide-viewer img:nth-child(2) { animation-delay: 4s; }
-        .slide-viewer img:nth-child(3) { animation-delay: 8s; }
+        .slide-viewer img:nth-child(1) { animation-delay: 0s;}
+        .slide-viewer img:nth-child(2) { animation-delay: 5s; }
+        .slide-viewer img:nth-child(3) { animation-delay: 10s; }
+        .slide-viewer img:nth-child(3) { animation-delay: 15s; }
+        .slide-viewer img:nth-child(3) { animation-delay: 20s; }
+        .slide-viewer img:nth-child(3) { animation-delay: 25s; }
+        .slide-viewer img:nth-child(3) { animation-delay: 30s; }
 
         @keyframes crossfade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            33% { opacity: 1; }
-            43% { opacity: 0; }
-            100% { opacity: 0; }
+            0% { opacity: 1; }
+            14.28% { opacity: 1; } 
+            14.29% { opacity: 0; } 
+            100% { opacity: 0; } 
         }
 
         .caption {
