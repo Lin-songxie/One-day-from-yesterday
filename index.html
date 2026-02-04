@@ -96,6 +96,10 @@
             flex-direction: column;
             gap: 15px;
             align-items: flex-start;
+            width: fit-content;       
+            padding-right: 12px;      
+            border-right: 1px solid #e0e0e0; 
+            margin-top: 0;
         }
 
         .portrait-frame {
@@ -111,14 +115,14 @@
 
         
         .bio-text, .references {
-            width: 100px; /* 宽度与照片保持一致，确保文字在边缘处自动控制 */
-            white-space: nowrap; /* 强制不换行 */
-            font-size: 0.85rem; /* 稍微缩小字号以适应宽度 */
-            font-family: var(--font-serif); /* 统一使用衬线体 */
+            width: 100px; 
+            white-space: nowrap;
+            font-size: 0.85rem;
+            font-family: var(--font-serif);
         }
 
         .bio-name {
-            font-weight: normal; /* 取消粗体，保持档案式的平整感 */
+            font-weight: normal;
             display: block;
             margin-bottom: 2px;
         }
@@ -135,16 +139,21 @@
 
        .ref-label {
            display: block;
-           font-style: italic; /* 阅读推荐标签使用斜体 */
-           text-decoration: none; /* 取消下划线 */
+           font-style: italic; 
+           text-decoration: none;
            margin-bottom: 5px;
            font-size: 0.8rem;
         }
 
        .references ul li {
-           font-style: italic; /* 推荐书目使用斜体 */
+           font-style: italic; 
            font-size: 0.75rem;
            line-height: 1.6;
+       }
+        
+       .references ul {
+           margin-bottom: 0;
+           padding-bottom: 0;
        }
     
         /* 
@@ -263,7 +272,7 @@
     <!-- Header Section -->
     <header>
         <h1>昨日世界的一天</h1>
-        <span class="meta-header">“喉咙里原始之水的清凉。<br>那微弱发光的雾日夜环绕着盲人。<br>那个或许已死之人的地址。<br>梦与众梦的弥散。<br>在我们脚下，模糊的莱茵河或罗讷河。”<br>          ——博尔赫斯《灰烬》</span>
+        <span class="meta-header">“那微弱发光的雾日夜环绕着盲人。<br>那个或许已死之人的地址。<br>梦与众梦的弥散。<br>在我们脚下，模糊的莱茵河或罗讷河。<br>一种已经消逝的不适。”<br>——博尔赫斯《灰烬》</span>
     </header>
 
     <!-- Main Grid Content -->
