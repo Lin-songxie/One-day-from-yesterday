@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>citysec2</title>
+    <style>
+        /* --- CSS STYLES --- */
+
+        /* General Page Reset & Layout */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF; /* Pure White */
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent scrolling if image is exact fit */
+        }
+
+        /* Container for Arrows and Image */
+        .gallery-container {
+            display: flex;
+            align-items: center; /* Vertically center items */
+            justify-content: space-between;
+            width: 95%;
+            max-width: 1200px;
+        }
+
+        /* Arrow Buttons */
+        .nav-arrow {
+            font-size: 3rem; /* Large size */
+            color: #ccc; /* Light gray initially */
+            cursor: pointer;
+            user-select: none; /* Prevent text selection */
+            padding: 20px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-arrow:hover {
+            color: #000000; /* Black on hover */
+        }
+
+        /* Class to hide arrows visually but keep layout stable (or remove completely) */
+        /* Using visibility: hidden keeps the layout rigid so the image doesn't jump */
+        .hidden {
+            visibility: hidden; 
+            pointer-events: none;
+        }
+
+        /* Image Wrapper (Center) */
+        .photo-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* The Photograph Styles */
+        #current-photo {
+            max-width: 100%;
+            max-height: 80vh; /* Leave room for caption and padding */
+            object-fit: contain;
+            
+            /* THE HANGING PHOTO EFFECT */
+            /* Box Shadow: Offset X, Offset Y, Blur Radius, Color */
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.15); 
+            
+            /* Hard Cut Transition (No animation properties here) */
+        }
+
+        /* Caption Styles */
+        #photo-caption {
+            margin-top: 15px;
+            color: #333333; /* Dark Gray */
+            font-size: 1rem;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-arrow { font-size: 2rem; padding: 10px; }
+            #current-photo { max-height: 70vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Gallery Structure -->
+    <div class="gallery-container">
+        
+        <!-- Left Arrow -->
+        <div id="prev-btn" class="nav-arrow" onclick="changePhoto(-1)">
+            &#10094; <!-- HTML Entity for Left Chevron -->
+        </div>
+
+        <!-- Center Content -->
+        <div class="photo-wrapper">
+            <img id="current-photo" src="" alt="Gallery Image">
+            <div id="photo-caption">Loading...</div>
+        </div>
+
+        <!-- Right Arrow -->
+        <div id="next-btn" class="nav-arrow" onclick="changePhoto(1)">
+            &#10095; <!-- HTML Entity for Right Chevron -->
+        </div>
+
+    </div>
+
+    <!-- --- JAVASCRIPT LOGIC --- -->
+    <script>
+        /**
+         * ============================================================
+         * 数据配置区域
+         * ============================================================
+         */
+
+        const photoData = [
+            // 第一张照片 (First Image)
+            {
+                src: "project_img_1.jpg", 
+                caption: "Project Concept Phase: Initial sketches."
+            },
+            
+            // --- 想要添加更多照片？请复制下面这对花括号 {...}, 粘贴在后面，并修改文件名和文字 ---
+            // --- Copy the block below to add more photos ---
+            
+            {
+                src: "project_img_2.jpg",
+                caption: "Design Mockups: Exploring color palettes."
+            },
+            {
+                src: "project_img_3.jpg",
+                caption: "Development: Core structure implementation."
+            },
+            {
+                src: "project_img_4.jpg",
+                caption: "Testing: User feedback session."
+            },
+
+            // 最后一张照片 (Last Image)
+            {
+                src: "project_img_5.jpg",
+                caption: "Final Launch: The finished product."
+            }
+        ];
+
+
+        let currentIndex = 0;
+
+        // DOM Elements
+        const photoEl = document.getElementById('current-photo');
+        const captionEl = document.getElementById('photo-caption');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // Initialize the gallery
+        function initGallery() {
+            updateDisplay();
+        }
+
+        // Main function to update the view
+        function updateDisplay() {
+            // 1. Update Image and Caption
+            const currentItem = photoData[currentIndex];
+            photoEl.src = currentItem.src;
+            captionEl.textContent = currentItem.caption;
+
+            // 2. Handle Arrow Visibility (First/Last Logic)
+            
+            // If first image, hide Left Arrow
+            if (currentIndex === 0) {
+                prevBtn.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+            }
+
+            // If last image, hide Right Arrow
+            if (currentIndex === photoData.length - 1) {
+                nextBtn.classList.add('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+            }
+        }
+
+        // Function called when arrows are clicked
+        function changePhoto(direction) {
+            // direction: -1 for left, 1 for right
+            const newIndex = currentIndex + direction;
+
+            // Boundary check (safety, though arrows should be hidden)
+            if (newIndex >= 0 && newIndex < photoData.length) {
+                currentIndex = newIndex;
+                updateDisplay(); // Hard cut update
+            }
+        }
+
+        // Start the gallery
+        initGallery();
+
+        // Optional: Keyboard Navigation (Left/Right Keys)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "ArrowLeft") {
+                if(currentIndex > 0) changePhoto(-1);
+            } else if (e.key === "ArrowRight") {
+                if(currentIndex < photoData.length - 1) changePhoto(1);
+            }
+        });
+
+    </script>
+</body>
+</html>
