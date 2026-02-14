@@ -17,34 +17,33 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Prevent scrolling if image is exact fit */
+            overflow: hidden; 
         }
 
         /* Container for Arrows and Image */
         .gallery-container {
             display: flex;
-            align-items: center; /* Vertically center items */
+            align-items: center; 
             justify-content: space-between;
             width: 95%;
             max-width: 1200px;
+            padding-bottom: 12vh; 
         }
 
         /* Arrow Buttons */
         .nav-arrow {
-            font-size: 3rem; /* Large size */
-            color: #ccc; /* Light gray initially */
+            font-size: 3rem; 
+            color: #ccc; 
             cursor: pointer;
-            user-select: none; /* Prevent text selection */
+            user-select: none; 
             padding: 20px;
             transition: color 0.2s ease;
         }
 
         .nav-arrow:hover {
-            color: #000000; /* Black on hover */
+            color: #000000; 
         }
 
-        /* Class to hide arrows visually but keep layout stable (or remove completely) */
-        /* Using visibility: hidden keeps the layout rigid so the image doesn't jump */
         .hidden {
             visibility: hidden; 
             pointer-events: none;
@@ -57,34 +56,39 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            flex-shrink: 1; 
         }
 
         /* The Photograph Styles */
         #current-photo {
-            max-width: 100%;
-            max-height: 80vh; /* Leave room for caption and padding */
+            /* 图像尺寸：缩小至视窗高度的 60% (原80%) */
+            max-height: 60vh; 
+            max-width: 80%;   
+            
             object-fit: contain;
-            
-            /* THE HANGING PHOTO EFFECT */
-            /* Box Shadow: Offset X, Offset Y, Blur Radius, Color */
-            box-shadow: 10px 10px 20px rgba(0,0,0,0.15); 
-            
-            /* Hard Cut Transition (No animation properties here) */
+            box-shadow: 10px 15px 25px rgba(0,0,0,0.5); 
         }
 
         /* Caption Styles */
         #photo-caption {
-            margin-top: 15px;
-            color: #333333; /* Dark Gray */
-            font-size: 1rem;
+            margin-top: 35px; 
+            
+            color: #333333; 
             text-align: center;
+            
+            font-style: italic;
+            font-family: "Times New Roman", Times, serif;
+            
+            font-size: 1.1rem; 
             font-weight: 400;
+            letter-spacing: 1px; 
         }
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-arrow { font-size: 2rem; padding: 10px; }
-            #current-photo { max-height: 70vh; }
+            #current-photo { max-height: 55vh; max-width: 90%; }
+            .gallery-container { padding-bottom: 10vh; }
         }
     </style>
 </head>
@@ -95,7 +99,7 @@
         
         <!-- Left Arrow -->
         <div id="prev-btn" class="nav-arrow" onclick="changePhoto(-1)">
-            &#10094; <!-- HTML Entity for Left Chevron -->
+            &#10094; 
         </div>
 
         <!-- Center Content -->
@@ -106,7 +110,7 @@
 
         <!-- Right Arrow -->
         <div id="next-btn" class="nav-arrow" onclick="changePhoto(1)">
-            &#10095; <!-- HTML Entity for Right Chevron -->
+            &#10095; 
         </div>
 
     </div>
